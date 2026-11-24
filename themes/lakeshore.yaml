@@ -1,0 +1,281 @@
+# Lakeshore: a Home Assistant theme in the style of a native desktop app with a floating glass sidebar, light and
+# dark mode in one theme. Community project, see the README for credits and trademarks.
+#
+# Two layers, as in the desktop system it follows: a flat, neutral content layer (grouped lists on a calm window
+# background, hairline separators, no shadows) and a glass navigation layer (the sidebar floats above the window).
+# Colours are the published system colours of that platform (2025 values); where a default colour falls below the
+# WCAG contrast minimum, the platform's own increased-contrast value is used instead (blue text, error and warning
+# text, the rim of the green switch).
+#
+# Works without any add-on: colours, the neutral window, white grouped cards, radii, green switches, blue selection,
+# blue keyboard focus and system fonts come from plain theme variables.
+# With card-mod 4.x installed (optional), the card-mod-* keys add the floating glass sidebar with its light rim,
+# hairline separators between rows of entities cards, section headings in the desktop style and the system font in
+# the sidebar. Without card-mod those keys are ignored.
+#
+# Fonts: the system UI font stack only (-apple-system, system-ui). Nothing is downloaded.
+Lakeshore:
+  card-mod-theme: Lakeshore
+
+  # Theme-own variables, used below and by the card-mod rules
+  lake-window: "#f2f2f7"
+  lake-window-low: "#efeff4"
+  lake-group: "#ffffff"
+  lake-field: "#f2f2f7"
+  lake-hairline: "rgba(60,60,67,.14)"
+  lake-glass: "rgba(255,255,255,.74)"
+  lake-glass-filter: "blur(30px) saturate(1.8)"
+  lake-glass-rim: "rgba(255,255,255,.95)"
+  lake-glass-edge: "0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06)"
+  lake-switch-on: "#34c759"
+  lake-switch-on-rim: "#008932"
+  lake-switch-off: "#e9e9eb"
+  lake-switch-off-rim: "#8e8e93"
+  lake-thumb: "#ffffff"
+  lake-thumb-shadow: "0 1px 1px rgba(0,0,0,.12), 0 2px 5px rgba(0,0,0,.18)"
+
+  # Blue: #0068da (link blue) for text and filled buttons, #0088ff (default system blue) for sliders and gauges
+  primary-color: "#0068da"
+  accent-color: "#0068da"
+  text-primary-color: "#ffffff"
+  primary-text-color: "#262628"
+  secondary-text-color: "#6c6c70"
+  disabled-text-color: "#aeaeb2"
+  rgb-primary-text-color: "38, 38, 40"
+  ha-color-primary-05: "#001633"
+  ha-color-primary-10: "#002a5c"
+  ha-color-primary-20: "#003f87"
+  ha-color-primary-30: "#0055b3"
+  ha-color-primary-40: "#0068da"
+  ha-color-primary-50: "#0088ff"
+  ha-color-primary-60: "#3a9fff"
+  ha-color-primary-70: "#70b8ff"
+  ha-color-primary-80: "#a3d0ff"
+  ha-color-primary-90: "#d4e8ff"
+  ha-color-primary-95: "#eaf3ff"
+
+  # The window and its grouped content
+  primary-background-color: "var(--lake-window)"
+  secondary-background-color: "var(--lake-window-low)"
+  lovelace-background: "linear-gradient(180deg, var(--lake-window) 0%, var(--lake-window-low) 100%) fixed"
+  card-background-color: "var(--lake-group)"
+  ha-card-background: "var(--lake-group)"
+  ha-card-border-color: "var(--lake-hairline)"
+  ha-card-border-width: "1px"
+  ha-card-border-radius: "12px"
+  ha-card-box-shadow: "none"
+  ha-badge-border-radius: "9999px"
+  ha-tile-icon-border-radius: "8px"
+  divider-color: "var(--lake-hairline)"
+  entities-card-row-gap: "12px"
+  ha-section-grid-row-gap: "12px"
+  ha-section-grid-column-gap: "12px"
+
+  # Dialogs and sheets
+  ha-dialog-border-radius: "20px"
+  ha-dialog-surface-background: "var(--lake-group)"
+  mdc-theme-surface: "var(--lake-group)"
+  mdc-dialog-scrim-color: "rgba(0,0,0,.20)"
+  paper-dialog-background-color: "var(--lake-group)"
+
+  # Toolbar and sidebar
+  app-header-background-color: "var(--lake-window)"
+  app-header-text-color: "var(--primary-text-color)"
+  app-header-border-bottom: "none"
+  sidebar-background-color: "#eaeaef"
+  sidebar-text-color: "var(--primary-text-color)"
+  sidebar-icon-color: "#5e5e63"
+  # A deeper blue for the selected row, so its text keeps 4.5:1 on the blue tint
+  sidebar-selected-text-color: "#0057b8"
+  sidebar-selected-icon-color: "#0057b8"
+  sidebar-menu-button-text-color: "var(--primary-text-color)"
+
+  # Keyboard focus ring in the accent blue, as on the desktop (the frontend default is grey)
+  ha-color-focus: "var(--primary-color)"
+
+  # Switches: green when on, white thumb, darker rim so the track keeps 3:1 against the white group
+  ha-switch-checked-background-color: "var(--lake-switch-on)"
+  ha-switch-checked-background-color-hover: "var(--lake-switch-on)"
+  ha-switch-checked-border-color: "var(--lake-switch-on-rim)"
+  ha-switch-checked-border-color-hover: "var(--lake-switch-on-rim)"
+  ha-switch-checked-thumb-background-color: "var(--lake-thumb)"
+  ha-switch-checked-thumb-background-color-hover: "var(--lake-thumb)"
+  ha-switch-background-color: "var(--lake-switch-off)"
+  ha-switch-background-color-hover: "var(--lake-switch-off)"
+  ha-switch-border-color: "var(--lake-switch-off-rim)"
+  ha-switch-thumb-background-color: "var(--lake-thumb)"
+  ha-switch-thumb-background-color-hover: "var(--lake-thumb)"
+  ha-switch-thumb-border-color: "transparent"
+  ha-switch-thumb-border-color-hover: "transparent"
+  ha-switch-checked-thumb-border-color: "transparent"
+  ha-switch-checked-thumb-border-color-hover: "transparent"
+  ha-switch-thumb-box-shadow: "var(--lake-thumb-shadow)"
+  switch-checked-button-color: "var(--lake-thumb)"
+  switch-checked-track-color: "var(--lake-switch-on)"
+  switch-unchecked-button-color: "var(--lake-thumb)"
+  switch-unchecked-track-color: "var(--lake-switch-off)"
+
+  # Inputs and forms: light grey fields inside white groups
+  ha-color-form-background: "var(--lake-field)"
+  ha-color-form-background-hover: "#e9e9ee"
+  input-fill-color: "var(--lake-field)"
+  mdc-text-field-fill-color: "var(--lake-field)"
+  mdc-select-fill-color: "var(--lake-field)"
+  input-idle-line-color: "var(--lake-hairline)"
+  input-hover-line-color: "var(--primary-color)"
+  input-outlined-idle-border-color: "var(--lake-hairline)"
+  code-editor-background-color: "var(--lake-field)"
+  markdown-code-background-color: "var(--lake-field)"
+
+  # Sliders, gauges and charts in the default system blue
+  slider-color: "#0088ff"
+  slider-track-color: "#e5e5ea"
+  control-slider-color: "#0088ff"
+  info-color: "#0088ff"
+  graph-color-1: "#0088ff"
+  graph-color-2: "#ff8d28"
+  graph-color-3: "#34c759"
+  graph-color-4: "#cb30e0"
+  graph-color-5: "#00c3d0"
+
+  # Fonts: the system UI font
+  ha-font-family-body: "-apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+  ha-font-family-heading: "-apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+  ha-font-family-code: "ui-monospace, Menlo, Consolas, monospace"
+  code-font-family: "ui-monospace, Menlo, Consolas, monospace"
+
+  # Messages as text: increased-contrast values, they meet 4.5:1 on white
+  error-color: "#e9152d"
+  warning-color: "#c55300"
+  success-color: "#008932"
+  # Palette for state icons: the default system colours (state is also given as text)
+  red-color: "#ff383c"
+  pink-color: "#ff2d55"
+  purple-color: "#cb30e0"
+  deep-purple-color: "#cb30e0"
+  indigo-color: "#6155f5"
+  blue-color: "#0088ff"
+  light-blue-color: "#00c0e8"
+  cyan-color: "#00c0e8"
+  teal-color: "#00c3d0"
+  green-color: "#34c759"
+  light-green-color: "#34c759"
+  lime-color: "#34c759"
+  yellow-color: "#ffcc00"
+  amber-color: "#ff8d28"
+  orange-color: "#ff8d28"
+  deep-orange-color: "#ff8d28"
+  brown-color: "#ac7f5e"
+  grey-color: "#8e8e93"
+  state-icon-color: "#5e5e63"
+
+  # Optional, card-mod 4.x: hairlines between rows of entities cards (inset like a grouped list), desktop-style
+  # section headings
+  card-mod-card: |
+    :host(hui-entities-card) #states > div + div::before {
+      content: "";
+      position: absolute;
+      top: calc(var(--entities-card-row-gap, 8px) / -2);
+      left: 56px;
+      right: 0;
+      height: 1px;
+      background: var(--divider-color);
+    }
+    :host(hui-heading-card) .title .heading {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+  # Optional, card-mod 4.x: the sidebar as a floating glass pane with a light rim, system font, rounded selection
+  card-mod-sidebar: |
+    :host {
+      margin: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      border-radius: 18px;
+      border: 1px solid var(--lake-glass-rim);
+      /* the frontend's own :host rule wins over card-mod at equal specificity, so set the variable it reads */
+      --sidebar-background-color: var(--lake-glass);
+      box-shadow: var(--lake-glass-edge);
+      -webkit-backdrop-filter: var(--lake-glass-filter);
+      backdrop-filter: var(--lake-glass-filter);
+      font-family: var(--ha-font-family-body);
+    }
+    .menu { border-bottom: 0 !important; background: transparent !important; }
+    ha-list-item-button { border-radius: 8px; }
+    ha-list-item-button.selected::before { border-radius: 8px; opacity: .12; }
+
+  modes:
+    light: {}
+    dark:
+      lake-window: "#161618"
+      lake-window-low: "#121214"
+      lake-group: "#1c1c1e"
+      lake-field: "#2c2c2e"
+      lake-hairline: "rgba(235,235,245,.12)"
+      lake-glass: "rgba(58,58,64,.62)"
+      lake-glass-rim: "rgba(255,255,255,.22)"
+      lake-glass-edge: "0 0 0 1px rgba(0,0,0,.50), 0 12px 36px rgba(0,0,0,.45)"
+      lake-switch-on: "#30d158"
+      lake-switch-on-rim: "#30d158"
+      lake-switch-off: "#39393d"
+      lake-switch-off-rim: "#8e8e93"
+      lake-thumb: "#ffffff"
+      lake-thumb-shadow: "0 1px 1px rgba(0,0,0,.30), 0 2px 5px rgba(0,0,0,.35)"
+      # Dark link blue for text; filled buttons use the darker increased-contrast blue under white text
+      primary-color: "#419cff"
+      accent-color: "#419cff"
+      text-primary-color: "#00152e"
+      primary-text-color: "#e3e3e5"
+      secondary-text-color: "#98989f"
+      disabled-text-color: "#5e5e63"
+      rgb-primary-text-color: "227, 227, 229"
+      ha-color-primary-05: "#000d1f"
+      ha-color-primary-10: "#00234d"
+      ha-color-primary-20: "#003675"
+      ha-color-primary-30: "#0050ad"
+      ha-color-primary-40: "#1e6ef4"
+      ha-color-primary-50: "#0091ff"
+      ha-color-primary-60: "#419cff"
+      ha-color-primary-70: "#7ab8ff"
+      ha-color-primary-80: "#a8d0ff"
+      ha-color-primary-90: "#d6e8ff"
+      ha-color-primary-95: "#ebf4ff"
+      sidebar-background-color: "#202023"
+      sidebar-icon-color: "#a1a1a6"
+      # Increased-contrast blue for the selected row on the lighter glass
+      sidebar-selected-text-color: "#5cb8ff"
+      sidebar-selected-icon-color: "#5cb8ff"
+      ha-color-form-background-hover: "#333336"
+      mdc-dialog-scrim-color: "rgba(0,0,0,.45)"
+      slider-color: "#0091ff"
+      slider-track-color: "#3a3a3c"
+      control-slider-color: "#0091ff"
+      info-color: "#0091ff"
+      graph-color-1: "#0091ff"
+      graph-color-2: "#ff9230"
+      graph-color-3: "#30d158"
+      graph-color-4: "#db34f2"
+      graph-color-5: "#00d2e0"
+      error-color: "#ff6165"
+      warning-color: "#ffa056"
+      success-color: "#30d158"
+      red-color: "#ff4245"
+      pink-color: "#ff375f"
+      purple-color: "#db34f2"
+      deep-purple-color: "#db34f2"
+      indigo-color: "#6d7cff"
+      blue-color: "#0091ff"
+      light-blue-color: "#3cd3fe"
+      cyan-color: "#3cd3fe"
+      teal-color: "#00d2e0"
+      green-color: "#30d158"
+      light-green-color: "#30d158"
+      lime-color: "#30d158"
+      yellow-color: "#ffd600"
+      amber-color: "#ff9230"
+      orange-color: "#ff9230"
+      deep-orange-color: "#ff9230"
+      brown-color: "#b78a66"
+      grey-color: "#8e8e93"
+      state-icon-color: "#a1a1a6"

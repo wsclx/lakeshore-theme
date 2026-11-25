@@ -26,6 +26,10 @@ Without card-mod the theme still works: groups, colours, type sizes, switches an
 
 ![Without card-mod: same groups and switches, flat sidebar with blue selection, no row separators](https://raw.githubusercontent.com/wsclx/lakeshore-theme/main/images/dashboard-light-desktop-no-cardmod.png)
 
+| Without card-mod, dark | Without card-mod, phone |
+|---|---|
+| ![Dark mode on desktop without card-mod](https://raw.githubusercontent.com/wsclx/lakeshore-theme/main/images/dashboard-dark-desktop-no-cardmod.png) | ![Light mode on a phone without card-mod](https://raw.githubusercontent.com/wsclx/lakeshore-theme/main/images/dashboard-light-phone-no-cardmod.png) |
+
 | Settings, light | Settings, dark |
 |---|---|
 | ![Settings in light mode](https://raw.githubusercontent.com/wsclx/lakeshore-theme/main/images/settings-light-desktop.png) | ![Settings in dark mode](https://raw.githubusercontent.com/wsclx/lakeshore-theme/main/images/settings-dark-desktop.png) |

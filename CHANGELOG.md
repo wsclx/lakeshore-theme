@@ -3,7 +3,7 @@
 All notable changes to this theme are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.1.1] - 2026-11-25
 
 ### Changed
 - Lighter glass blur on the sidebar (12 px instead of 30 px): over the calm window a strong blur showed nothing and cost GPU time.

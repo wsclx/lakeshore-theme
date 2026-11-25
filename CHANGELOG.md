@@ -10,6 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), ver
 - The window gradient no longer uses `background-attachment: fixed`, which made mobile Safari repaint while scrolling.
 
 ### Fixed
+- Keyboard focus on tile and button cards was nearly invisible: the theme set the card shadow to `none`, which turned the frontend's focus ring into an invalid value. The card shadow is now a transparent zero shadow, so the ring shows again; with card-mod it is a 2 px ring in the focus blue.
 - `rgb-primary-background-color`, `rgb-secondary-background-color` and `rgb-card-background-color` are now set for both modes, so cards that mix these with transparency get the theme's greys instead of the Home Assistant defaults.
 
 ## [1.1.0] - 2026-11-25

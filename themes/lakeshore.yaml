@@ -72,7 +72,8 @@ Lakeshore:
   ha-card-border-color: "var(--lake-hairline)"
   ha-card-border-width: "1px"
   ha-card-border-radius: "12px"
-  ha-card-box-shadow: "none"
+  # No shadow, but not "none": the frontend appends its focus ring to this value, and "none, <ring>" is invalid
+  ha-card-box-shadow: "0 0 0 0 transparent"
   ha-badge-border-radius: "9999px"
   ha-tile-icon-border-radius: "8px"
   divider-color: "var(--lake-hairline)"
@@ -219,6 +220,12 @@ Lakeshore:
       right: 0;
       height: 1px;
       background: var(--divider-color);
+    }
+    /* keyboard focus on tiles and button cards as a 2 px ring in the focus blue, as on the desktop */
+    ha-card:has(ha-tile-container[focused]),
+    ha-card:focus-visible {
+      border-color: var(--ha-color-focus) !important;
+      box-shadow: 0 0 0 2px var(--ha-color-focus) !important;
     }
     /* tile controls at desktop control height instead of 42 px */
     hui-card-features { --feature-height: 32px; }

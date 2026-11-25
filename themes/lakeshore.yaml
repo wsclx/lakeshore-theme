@@ -3,26 +3,27 @@
 #
 # Two layers, as in the desktop system it follows: a flat, neutral content layer (grouped lists on a calm window
 # background, hairline separators, no shadows) and a glass navigation layer (the sidebar floats above the window).
-# Colours are the published system colours of that platform (2025 values); where a default colour falls below the
-# WCAG contrast minimum, the platform's own increased-contrast value is used instead (blue text, error and warning
-# text, the rim of the green switch).
+# Colours, greys and label opacities are the platform's own values, measured on the current release; type sizes and
+# control proportions follow its desktop scale (13 px body). Where a default colour falls below the WCAG contrast
+# minimum, the platform's own increased-contrast value or a darker step of the same grey is used instead (blue text,
+# secondary text, error and warning text, the rim of the green switch).
 #
 # Works without any add-on: colours, the neutral window, white grouped cards, radii, green switches, blue selection,
 # blue keyboard focus and system fonts come from plain theme variables.
 # With card-mod 4.x installed (optional), the card-mod-* keys add the floating glass sidebar with its light rim,
-# hairline separators between rows of entities cards, section headings in the desktop style and the system font in
-# the sidebar. Without card-mod those keys are ignored.
+# hairline separators between rows of entities cards, a neutral selection in the sidebar (grey pill, label-coloured
+# text, blue symbol), section headings in the desktop style and the system font in the sidebar. Without card-mod those keys are ignored.
 #
 # Fonts: the system UI font stack only (-apple-system, system-ui). Nothing is downloaded.
 Lakeshore:
   card-mod-theme: Lakeshore
 
   # Theme-own variables, used below and by the card-mod rules
-  lake-window: "#f2f2f7"
-  lake-window-low: "#efeff4"
+  lake-window: "#f6f6f6"
+  lake-window-low: "#f1f1f1"
   lake-group: "#ffffff"
-  lake-field: "#f2f2f7"
-  lake-hairline: "rgba(60,60,67,.14)"
+  lake-field: "#f0f0f0"
+  lake-hairline: "rgba(0,0,0,.10)"
   lake-glass: "rgba(255,255,255,.74)"
   lake-glass-filter: "blur(30px) saturate(1.8)"
   lake-glass-rim: "rgba(255,255,255,.95)"
@@ -33,20 +34,24 @@ Lakeshore:
   lake-switch-off-rim: "#8e8e93"
   lake-thumb: "#ffffff"
   lake-thumb-shadow: "0 1px 1px rgba(0,0,0,.12), 0 2px 5px rgba(0,0,0,.18)"
+  lake-selection: "#dcdcdc"
+  lake-selection-symbol: "#0068da"
 
   # Blue: #0068da (link blue) for text and filled buttons, #0088ff (default system blue) for sliders and gauges
   primary-color: "#0068da"
   accent-color: "#0068da"
   text-primary-color: "#ffffff"
-  primary-text-color: "#262628"
-  secondary-text-color: "#6c6c70"
-  disabled-text-color: "#aeaeb2"
-  rgb-primary-text-color: "38, 38, 40"
+  # Label 85 % black; secondary label one step darker than the measured 50 % so it keeps 4.5:1 on the window
+  primary-text-color: "#272727"
+  secondary-text-color: "#6b6b6b"
+  disabled-text-color: "#bdbdbd"
+  rgb-primary-text-color: "39, 39, 39"
   ha-color-primary-05: "#001633"
   ha-color-primary-10: "#002a5c"
   ha-color-primary-20: "#003f87"
   ha-color-primary-30: "#0055b3"
-  ha-color-primary-40: "#0068da"
+  # Filled buttons in the colour of selected content
+  ha-color-primary-40: "#0064e1"
   ha-color-primary-50: "#0088ff"
   ha-color-primary-60: "#3a9fff"
   ha-color-primary-70: "#70b8ff"
@@ -82,16 +87,16 @@ Lakeshore:
   app-header-background-color: "var(--lake-window)"
   app-header-text-color: "var(--primary-text-color)"
   app-header-border-bottom: "none"
-  sidebar-background-color: "#eaeaef"
+  sidebar-background-color: "#ececec"
   sidebar-text-color: "var(--primary-text-color)"
-  sidebar-icon-color: "#5e5e63"
+  sidebar-icon-color: "#5e5e5e"
   # A deeper blue for the selected row, so its text keeps 4.5:1 on the blue tint
   sidebar-selected-text-color: "#0057b8"
   sidebar-selected-icon-color: "#0057b8"
   sidebar-menu-button-text-color: "var(--primary-text-color)"
 
   # Keyboard focus ring in the accent blue, as on the desktop (the frontend default is grey)
-  ha-color-focus: "var(--primary-color)"
+  ha-color-focus: "#0067f4"
 
   # Switches: green when on, white thumb, darker rim so the track keeps 3:1 against the white group
   ha-switch-checked-background-color: "var(--lake-switch-on)"
@@ -114,10 +119,28 @@ Lakeshore:
   switch-checked-track-color: "var(--lake-switch-on)"
   switch-unchecked-button-color: "var(--lake-thumb)"
   switch-unchecked-track-color: "var(--lake-switch-off)"
+  # Switch proportions of the desktop (54 x 24): settings switches at full size, entity rows a step smaller
+  ha-switch-width: "54px"
+  ha-switch-size: "24px"
+  ha-switch-thumb-size: "20px"
+  ha-entity-toggle-switch-width: "46px"
+  ha-entity-toggle-switch-size: "22px"
+  ha-entity-toggle-switch-thumb-size: "18px"
+
+  # Desktop type scale: 13 px body, 11 px small, titles 15 / 17 / 22 / 26 px
+  ha-font-size-s: "11px"
+  ha-font-size-m: "13px"
+  ha-font-size-l: "15px"
+  ha-font-size-xl: "17px"
+  ha-font-size-2xl: "22px"
+  ha-font-size-3xl: "26px"
+
+  # Tile controls as capsules (their height needs card-mod, below)
+  ha-card-features-border-radius: "9999px"
 
   # Inputs and forms: light grey fields inside white groups
   ha-color-form-background: "var(--lake-field)"
-  ha-color-form-background-hover: "#e9e9ee"
+  ha-color-form-background-hover: "#e8e8e8"
   input-fill-color: "var(--lake-field)"
   mdc-text-field-fill-color: "var(--lake-field)"
   mdc-select-fill-color: "var(--lake-field)"
@@ -129,7 +152,7 @@ Lakeshore:
 
   # Sliders, gauges and charts in the default system blue
   slider-color: "#0088ff"
-  slider-track-color: "#e5e5ea"
+  slider-track-color: "#e6e6e6"
   control-slider-color: "#0088ff"
   info-color: "#0088ff"
   graph-color-1: "#0088ff"
@@ -167,10 +190,19 @@ Lakeshore:
   deep-orange-color: "#ff8d28"
   brown-color: "#ac7f5e"
   grey-color: "#8e8e93"
-  state-icon-color: "#5e5e63"
+  # States in system colours: covers and valves blue, climate heat orange and cool blue, motion orange
+  state-cover-active-color: "var(--blue-color)"
+  state-valve-active-color: "var(--blue-color)"
+  state-climate-heat-color: "var(--orange-color)"
+  state-climate-cool-color: "var(--blue-color)"
+  state-climate-heat-cool-color: "var(--orange-color)"
+  state-climate-fan_only-color: "var(--teal-color)"
+  state-binary_sensor-active-color: "var(--orange-color)"
+  state-media_player-active-color: "var(--blue-color)"
+  state-icon-color: "#5e5e5e"
 
-  # Optional, card-mod 4.x: hairlines between rows of entities cards (inset like a grouped list), desktop-style
-  # section headings
+  # Optional, card-mod 4.x: hairlines between rows of entities cards (inset like a grouped list), compact tile
+  # controls, desktop-style section headings
   card-mod-card: |
     :host(hui-entities-card) #states > div + div::before {
       content: "";
@@ -181,6 +213,8 @@ Lakeshore:
       height: 1px;
       background: var(--divider-color);
     }
+    /* tile controls at desktop control height instead of 42 px */
+    hui-card-features { --feature-height: 32px; }
     :host(hui-heading-card) .title .heading {
       font-size: 13px;
       font-weight: 600;
@@ -202,54 +236,66 @@ Lakeshore:
       font-family: var(--ha-font-family-body);
     }
     .menu { border-bottom: 0 !important; background: transparent !important; }
+    /* selection as on the desktop: neutral grey pill, label-coloured text, blue symbol */
     ha-list-item-button { border-radius: 8px; }
-    ha-list-item-button.selected::before { border-radius: 8px; opacity: .12; }
+    ha-list-item-button.selected::before {
+      border-radius: 8px !important;
+      background-color: var(--lake-selection) !important;
+      opacity: 1 !important;
+    }
+    ha-list-item-button.selected::part(headline) { color: var(--primary-text-color) !important; }
+    ha-list-item-button.selected ha-svg-icon[slot=start],
+    ha-list-item-button.selected ha-icon[slot=start] { color: var(--lake-selection-symbol) !important; }
 
   modes:
     light: {}
     dark:
-      lake-window: "#161618"
-      lake-window-low: "#121214"
-      lake-group: "#1c1c1e"
-      lake-field: "#2c2c2e"
-      lake-hairline: "rgba(235,235,245,.12)"
-      lake-glass: "rgba(58,58,64,.62)"
+      lake-window: "#1e1e1e"
+      lake-window-low: "#1a1a1a"
+      lake-group: "#282828"
+      lake-field: "#323232"
+      lake-hairline: "rgba(255,255,255,.12)"
+      lake-glass: "rgba(60,60,60,.62)"
       lake-glass-rim: "rgba(255,255,255,.22)"
       lake-glass-edge: "0 0 0 1px rgba(0,0,0,.50), 0 12px 36px rgba(0,0,0,.45)"
       lake-switch-on: "#30d158"
       lake-switch-on-rim: "#30d158"
-      lake-switch-off: "#39393d"
+      lake-switch-off: "#3c3c3c"
       lake-switch-off-rim: "#8e8e93"
       lake-thumb: "#ffffff"
       lake-thumb-shadow: "0 1px 1px rgba(0,0,0,.30), 0 2px 5px rgba(0,0,0,.35)"
-      # Dark link blue for text; filled buttons use the darker increased-contrast blue under white text
+      lake-selection: "#464646"
+      lake-selection-symbol: "#419cff"
+      # Dark link blue for text; filled buttons in the dark colour of selected content under white text
       primary-color: "#419cff"
       accent-color: "#419cff"
       text-primary-color: "#00152e"
-      primary-text-color: "#e3e3e5"
-      secondary-text-color: "#98989f"
-      disabled-text-color: "#5e5e63"
-      rgb-primary-text-color: "227, 227, 229"
+      # Label 85 % and secondary label 55 % white, as measured
+      primary-text-color: "#dedede"
+      secondary-text-color: "#9e9e9e"
+      disabled-text-color: "#5d5d5d"
+      rgb-primary-text-color: "222, 222, 222"
       ha-color-primary-05: "#000d1f"
       ha-color-primary-10: "#00234d"
       ha-color-primary-20: "#003675"
       ha-color-primary-30: "#0050ad"
-      ha-color-primary-40: "#1e6ef4"
+      ha-color-primary-40: "#0059d1"
       ha-color-primary-50: "#0091ff"
       ha-color-primary-60: "#419cff"
       ha-color-primary-70: "#7ab8ff"
       ha-color-primary-80: "#a8d0ff"
       ha-color-primary-90: "#d6e8ff"
       ha-color-primary-95: "#ebf4ff"
-      sidebar-background-color: "#202023"
-      sidebar-icon-color: "#a1a1a6"
+      sidebar-background-color: "#242424"
+      sidebar-icon-color: "#a1a1a1"
       # Increased-contrast blue for the selected row on the lighter glass
       sidebar-selected-text-color: "#5cb8ff"
       sidebar-selected-icon-color: "#5cb8ff"
-      ha-color-form-background-hover: "#333336"
+      ha-color-form-background-hover: "#3a3a3a"
+      ha-color-focus: "#1aa9ff"
       mdc-dialog-scrim-color: "rgba(0,0,0,.45)"
       slider-color: "#0091ff"
-      slider-track-color: "#3a3a3c"
+      slider-track-color: "#3c3c3c"
       control-slider-color: "#0091ff"
       info-color: "#0091ff"
       graph-color-1: "#0091ff"
@@ -277,5 +323,5 @@ Lakeshore:
       orange-color: "#ff9230"
       deep-orange-color: "#ff9230"
       brown-color: "#b78a66"
-      grey-color: "#8e8e93"
-      state-icon-color: "#a1a1a6"
+      grey-color: "#98989d"
+      state-icon-color: "#a1a1a1"

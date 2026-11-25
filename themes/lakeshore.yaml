@@ -25,7 +25,7 @@ Lakeshore:
   lake-field: "#f0f0f0"
   lake-hairline: "rgba(0,0,0,.10)"
   lake-glass: "rgba(255,255,255,.74)"
-  lake-glass-filter: "blur(30px) saturate(1.8)"
+  lake-glass-filter: "blur(12px) saturate(1.6)"
   lake-glass-rim: "rgba(255,255,255,.95)"
   lake-glass-edge: "0 0 0 1px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06)"
   lake-switch-on: "#34c759"
@@ -62,7 +62,11 @@ Lakeshore:
   # The window and its grouped content
   primary-background-color: "var(--lake-window)"
   secondary-background-color: "var(--lake-window-low)"
-  lovelace-background: "linear-gradient(180deg, var(--lake-window) 0%, var(--lake-window-low) 100%) fixed"
+  lovelace-background: "linear-gradient(180deg, var(--lake-window) 0%, var(--lake-window-low) 100%)"
+  # rgb-* partners: the frontend derives them only from plain hex values, not from var()
+  rgb-primary-background-color: "246, 246, 246"
+  rgb-secondary-background-color: "241, 241, 241"
+  rgb-card-background-color: "255, 255, 255"
   card-background-color: "var(--lake-group)"
   ha-card-background: "var(--lake-group)"
   ha-card-border-color: "var(--lake-hairline)"
@@ -79,6 +83,7 @@ Lakeshore:
   # Dialogs and sheets
   ha-dialog-border-radius: "20px"
   ha-dialog-surface-background: "var(--lake-group)"
+  # Fallbacks for older frontends and custom cards that still read the mdc-* and paper-* names
   mdc-theme-surface: "var(--lake-group)"
   mdc-dialog-scrim-color: "rgba(0,0,0,.20)"
   paper-dialog-background-color: "var(--lake-group)"
@@ -115,6 +120,7 @@ Lakeshore:
   ha-switch-checked-thumb-border-color: "transparent"
   ha-switch-checked-thumb-border-color-hover: "transparent"
   ha-switch-thumb-box-shadow: "var(--lake-thumb-shadow)"
+  # Fallbacks for older frontends and custom cards
   switch-checked-button-color: "var(--lake-thumb)"
   switch-checked-track-color: "var(--lake-switch-on)"
   switch-unchecked-button-color: "var(--lake-thumb)"
@@ -141,6 +147,7 @@ Lakeshore:
   # Inputs and forms: light grey fields inside white groups
   ha-color-form-background: "var(--lake-field)"
   ha-color-form-background-hover: "#e8e8e8"
+  # Fallbacks for older frontends and custom cards
   input-fill-color: "var(--lake-field)"
   mdc-text-field-fill-color: "var(--lake-field)"
   mdc-select-fill-color: "var(--lake-field)"
@@ -275,6 +282,9 @@ Lakeshore:
       secondary-text-color: "#9e9e9e"
       disabled-text-color: "#5d5d5d"
       rgb-primary-text-color: "222, 222, 222"
+      rgb-primary-background-color: "30, 30, 30"
+      rgb-secondary-background-color: "26, 26, 26"
+      rgb-card-background-color: "40, 40, 40"
       ha-color-primary-05: "#000d1f"
       ha-color-primary-10: "#00234d"
       ha-color-primary-20: "#003675"

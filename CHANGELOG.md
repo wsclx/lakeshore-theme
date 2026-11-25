@@ -5,6 +5,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), ver
 
 ## [Unreleased]
 
+### Changed
+- Lighter glass blur on the sidebar (12 px instead of 30 px): over the calm window a strong blur showed nothing and cost GPU time.
+- The window gradient no longer uses `background-attachment: fixed`, which made mobile Safari repaint while scrolling.
+
+### Fixed
+- `rgb-primary-background-color`, `rgb-secondary-background-color` and `rgb-card-background-color` are now set for both modes, so cards that mix these with transparency get the theme's greys instead of the Home Assistant defaults.
+
 ## [1.1.0] - 2026-11-25
 
 ### Changed
